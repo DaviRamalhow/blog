@@ -2,16 +2,9 @@
 
   <div id="app">
 
-    <p v-once>{{ title }}</p> {{ dia }} <br> {{ saudacao() }}
+    <p v-once>{{ title }}</p>
 
     <input type="text" v-model="title">
-    <input type="text" v-model="dia">
-    <input type="text" v-model="nome">
-    <br>
-    <a v-bind:href="link">google</a>
-
-    <br>
-    <p v-html="linkHtml"></p>
 
   </div>
 </template>
@@ -24,14 +17,8 @@ import { ref } from "vue";
 //import { data } from "./utils";
 
 const title = ref("Usando VuesJS 3");
-const dia = ref("dia 30");
-const link = ref("http://google.com.br");
-const linkHtml = ref('<a v-bind:href="link">google</a>');
 
 
-const saudacao = () => {
-  title.value = "Boa semana";
-  return title.value;
 }
 
 </script>
