@@ -19,7 +19,7 @@ import { ref } from "vue";
 const title = ref("Usando VuesJS 3");
 
 
-}
+
 
 </script>
 
