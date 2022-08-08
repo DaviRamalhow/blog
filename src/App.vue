@@ -2,9 +2,8 @@
 
   <div id="app">
 
-    <p v-once>{{ title }}</p>
-
-    <input type="text" v-model="title">
+    <p>{{ contador }}</p>
+    <button @click="contador++">Somar 1</button>
 
   </div>
 </template>
@@ -16,12 +15,11 @@
 import { ref } from "vue";
 //import { data } from "./utils";
 
-const title = ref("Usando VuesJS 3");
-
-
+const contador = ref(0);
 
 
 </script>
+
 
 <!--================ STYLE ================-->
 <style>
