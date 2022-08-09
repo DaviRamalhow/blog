@@ -2,9 +2,11 @@
 
   <div id="app">
 
-    <p>{{ titulo }}</p>
-    <input type="" v-model="titulo">
-
+    <button @click="aumentar">aumentar</button>
+    <button @click="dimuir">dimuir</button>
+    <p>Contador: {{ Contador }}</p>
+    <p>Resultado: {{ resultado() }}</p>
+    {{ mutiplicado }}
   </div>
 </template>
 <!--================ END TEMPLATE ================-->
@@ -13,11 +15,30 @@
 
 <!--================ SCRIPT ================-->
 <script setup>
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
 //import { data } from "./utils";
 
-const titulo = ref("Usando VueJS!");
+const Contador = ref(0);
+const mutiplicado = computed(() => {
+  return Contador.value * 2;
+})
 
+const aumentar = () => {
+  Contador.value++;
+  //Resultado.value = Contador.value >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+}
+const dimuir = () => {
+  Contador.value--;
+  // Resultado.value = Contador.value >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+}
+const resultado = () => {
+  return Contador.value >= 5 ? "Maior ou igual a 5" : "Menor que 5";
+}
+watch(Contador, () => {
+  setTimeout(() => {
+    Contador.value = 0;
+  }, 5000)
+})
 </script>
 
 
