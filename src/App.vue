@@ -1,13 +1,15 @@
 <template>
 
   <div id="app">
-
-    <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
-    <br>
-    <div class="demo2"></div>
-    <br>
-    <div class="demo3"></div>
-
+    <div id="caixas">
+      <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
+      <br>
+      <div class="demo2"></div>
+      <br>
+      <div class="demo3" :class="[classeCSS, { girar: aplicarGirar }]"></div>
+    </div>
+    <hr>
+    <input type="text" v-model="classeCSS">
   </div>
 </template>
 <!--================ END TEMPLATE ================-->
@@ -18,6 +20,9 @@
 <script setup>
 import { ref, computed } from "vue";
 const aplicarC1 = ref(false);
+const classeCSS = ref("c1");
+const aplicarGirar = ref(true);
+
 
 const estilo1 = computed(() => {
   return {
@@ -32,7 +37,7 @@ const estilo1 = computed(() => {
 
 <!--================ STYLE ================-->
 <style>
-#app {
+#caixas {
   font-family: 'Courier New', Courier, monospace;
   display: flex;
   justify-content: space-between;
@@ -79,5 +84,9 @@ input {
 
 .c3 {
   background-color: blue;
+}
+
+.girar {
+  transform: rotate(45deg);
 }
 </style>
