@@ -9,7 +9,12 @@
     </p>
     <hr>
     <input type="text" @keyup.enter="exibirAlerta">
+    <br>
+    <br>
 
+    <button @click="exibirAlerta">Exibir alerta</button>
+    <input type="text" @keydown.enter="data = $event.target.value">
+    <p>{{ data }}</p>
 
   </div>
 </template>
@@ -39,6 +44,8 @@ const somar = (X, ev) => {
 const exibirAlerta = () => {
   alert("estou te alertando");
 }
+
+const data = ref(0);
 </script>
 
 
