@@ -3,7 +3,13 @@
   <div id="app">
 
     <p>{{ contador }}</p>
-    <button @click="contador++">Somar 1</button>
+    <button @click="somar(3)">Somar 1</button>
+    <p @mousemove="mouseMove">Mouse:{{ x }} e {{ y }}
+      <span @mousemove.stop="mousemove">PARAR AQUI!!!!!!</span>
+    </p>
+    <hr>
+    <input type="text" @keyup.enter="exibirAlerta">
+
 
   </div>
 </template>
@@ -16,8 +22,23 @@ import { ref } from "vue";
 //import { data } from "./utils";
 
 const contador = ref(0);
+const x = ref(0);
+const y = ref(0);
 
+const mouseMove = (event) => {
+  x.value = event.clientX;
+  y.value = event.clientY;
+  console.log(event.clientX, event.clientY);
+}
 
+const somar = (X, ev) => {
+
+  console.log(x, ev);
+  contador.value = contador.value + X;
+}
+const exibirAlerta = () => {
+  alert("estou te alertando");
+}
 </script>
 
 
