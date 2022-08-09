@@ -2,11 +2,12 @@
 
   <div id="app">
 
-    <button @click="aumentar">aumentar</button>
-    <button @click="dimuir">dimuir</button>
-    <p>Contador: {{ Contador }}</p>
-    <p>Resultado: {{ resultado() }}</p>
-    {{ mutiplicado }}
+    <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
+    <br>
+    <div class="demo2"></div>
+    <br>
+    <div class="demo3"></div>
+
   </div>
 </template>
 <!--================ END TEMPLATE ================-->
@@ -15,30 +16,16 @@
 
 <!--================ SCRIPT ================-->
 <script setup>
-import { ref, computed, watch } from "vue";
-//import { data } from "./utils";
+import { ref, computed } from "vue";
+const aplicarC1 = ref(false);
 
-const Contador = ref(0);
-const mutiplicado = computed(() => {
-  return Contador.value * 2;
+const estilo1 = computed(() => {
+  return {
+    c1: aplicarC1.value,
+    c2: !aplicarC1.value,
+  }
 })
 
-const aumentar = () => {
-  Contador.value++;
-  //Resultado.value = Contador.value >= 5 ? "Maior ou igual a 5" : "Menor que 5";
-}
-const dimuir = () => {
-  Contador.value--;
-  // Resultado.value = Contador.value >= 5 ? "Maior ou igual a 5" : "Menor que 5";
-}
-const resultado = () => {
-  return Contador.value >= 5 ? "Maior ou igual a 5" : "Menor que 5";
-}
-watch(Contador, () => {
-  setTimeout(() => {
-    Contador.value = 0;
-  }, 5000)
-})
 </script>
 
 
@@ -46,8 +33,9 @@ watch(Contador, () => {
 <!--================ STYLE ================-->
 <style>
 #app {
-
   font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: space-between;
 }
 
 input {
@@ -58,5 +46,38 @@ input {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-color: transparent;
   margin-left: 0.5rem;
+}
+
+.demo {
+  margin-left: 1.75rem;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(59, 59, 59);
+}
+
+.demo2 {
+  margin-left: 1.75rem;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(59, 59, 59);
+}
+
+.demo3 {
+  margin-left: 1.75rem;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(59, 59, 59);
+}
+
+.c1 {
+  background-color: red;
+}
+
+.c2 {
+  background-color: green;
+}
+
+.c3 {
+  background-color: blue;
 }
 </style>
