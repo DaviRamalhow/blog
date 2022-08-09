@@ -2,14 +2,16 @@
 
   <div id="app">
     <div id="caixas">
-      <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
+      <div class="demo" :style="{ backgroundColor: cor }"></div>
       <br>
-      <div class="demo2"></div>
+      <div class="demo2" :style="[meuEstilo]"></div>
       <br>
-      <div class="demo3" :class="[classeCSS, { girar: aplicarGirar }]"></div>
+      <div class="demo3"></div>
     </div>
     <hr>
-    <input type="text" v-model="classeCSS">
+    <input type="text" v-model="cor">
+    <input type="text" v-model="largura">
+    <input type="text" v-model="altura">
   </div>
 </template>
 <!--================ END TEMPLATE ================-->
@@ -19,17 +21,17 @@
 <!--================ SCRIPT ================-->
 <script setup>
 import { ref, computed } from "vue";
-const aplicarC1 = ref(false);
-const classeCSS = ref("c1");
-const aplicarGirar = ref(true);
-
-
-const estilo1 = computed(() => {
+const cor = ref("red");
+const largura = ref(100);
+const altura = ref(40);
+const meuEstilo = computed(() => {
   return {
-    c1: aplicarC1.value,
-    c2: !aplicarC1.value,
+    "background-color": cor.value,
+    width: largura.value + 'px',
+    height: altura.value + 'px'
   }
 })
+// const v = { "background-color": cor.value }
 
 </script>
 
